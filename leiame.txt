@@ -1,0 +1,11 @@
+Ferramenta escolhida.
+
+FRONTEND: HTML + CSS
+BACKEND: PHP
+BANCO: POSTGRESS
+
+VERSIONAMENTO: GITHUB
+
+PROJETO
+G3 - Gravadora Warner Editora Pearson
+

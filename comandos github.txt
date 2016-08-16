@@ -1,9 +1,13 @@
-1º Executar o git bash here na pasta que deseja commitar 
-2º Adicionar as alterações exe:
-git add * (irá adicionar todos os arquivos da part)
-3º Commitar as alterações exempl:
-git commit -m "mensagem do commit"
-4º Publicar o commit exemplo:
-git push origin master
-5º Atuliazaar os fontes na pasta exemplo:
-git pull origin master
+1Âº Executar o git bash here na pasta que deseja commitar 
+
+2Âº Adicionar as alteraÃ§Ãµes ex:
+  git add * (irÃ¡ adicionar todos os arquivos da part)
+  
+3Âº Commitar as alteraÃ§Ãµes ex:
+  git commit -m "mensagem do commit"
+
+4Âº Publicar o commit ex:
+  git push origin master
+
+5Âº Atualiazar as fontes na pasta exemplo:
+  git pull origin master

@@ -38,3 +38,9 @@ Atualização/Implantação de Estoque:
     
   - Criação do programa de pedidos de venda.
     - Criar um cadastro que permita a geração de pedidos de venda para os clientes (Americanas e Saraiva). O usuário deverá fornecer o código do cliente (temporariamente fixo devido à exclusividade de clientes) e os itens do pedido, informando a quantidade de cada um deles.
+
+Tecnologias:
+  Frontend: HTML + CSS
+  Backend: PHP
+  Banco de Dados: Postgress
+  Versionamento: GitHub

@@ -3,7 +3,7 @@ CREATE TABLE `item` (
 	`cd-categ` INT NOT NULL,
 	`cd-item` INT NOT NULL AUTO_INCREMENT UNIQUE,
 	`des-item` VARCHAR(255) NOT NULL,
-	`val-preco` FLOAT NOT NULL,
+	`val-item` FLOAT NOT NULL,
 	PRIMARY KEY (`cd-item`)
 );
 

@@ -1,10 +1,47 @@
 <?php
-	function getLastItem($conexao){
-		$sql = "SELECT * FROM item order by 'cd-item' LIMIT 1";
+	include "../util/connect.php";
+
+	$acao = "";
+
+	if (isset($_POST["action"])){
+		$acao = $_POST["action"];
+	}
+
+	switch ($acao) {
+		case 'insert':
+			echo insertItem();
+			break;
+		case 'getSequence';
+			echo getLastItem();
+			break;
+	}
+
+	function getLastItem(){
+		$conexao = connect();
+
+		$sql = "SELECT MAX(`cd-item`) as value FROM item";
 		$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");
 
 		$row = mysqli_fetch_array($result);
-		return $row["cd-item"];
+		return $row[0];
+	}
+
+	function insertItem(){
+		$conexao = connect();
+
+		$codItem  = $_POST["codItem"];
+		$desItem  = $_POST["desItem"];
+		$codCateg = $_POST["codCateg"];
+		$valItem  = $_POST["valItem"];
+		$obsItem  = $_POST["obsItem"];
+
+		$insert = "INSERT INTO item values('".$desItem."',".$codCateg.",".$codItem.",'".$obsItem."',".$valItem.")";
+		$resultado = mysqli_query($conexao,$insert);
+
+		if ($resultado){
+			return "Registro foi salvo com sucesso!";
+		}
+		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
 	}
 	
 ?>

@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>Cadastrar item</title>
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">	
 	<script type="text/javascript" src="../js/jquery-3.1.0.min.js">
 	</script>
 </head>
 <body>
 <?php
 	include "../controller/ctrl_item.php";
-
 	$codItem = intval(getLastItem()) + 1;
-
 ?>
-	<form id="ajax_form" action="POST" action="#">
+	<form id="ajax_form" method="POST" action="#">
 		<input type="hidden" id="acao">
 
 		<div> 
@@ -75,16 +74,16 @@
 			});
 			
 			 jQuery.ajax({
-			 			type: "POST",
-			 			url: "../controller/ctrl_item.php",
-			 			data:{
-			 				action: 'getSequence'	
-			 			}, 
-			 			success: function( data )
-			 			{
-			 				$("#cod-item").val(parseInt(data) + 1);
-						}
-			 		});
+					type: "POST",
+					url: "../controller/ctrl_item.php",
+					data:{
+						action: 'getSequence'	
+					}, 
+					success: function( data )
+					{
+						$("#cod-item").val(parseInt(data) + 1);
+					}
+				});
 			return false;
 		});
 	});

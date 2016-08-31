@@ -3,7 +3,7 @@
 	function connect(){		
 		$conexao = mysqli_connect('localhost', 'root', '');
 		if (!$conexao) {
-	    	die('Não foi possível conectar: ' . mysql_error());
+	    	return('Não foi possível conectar: ' . mysql_error());
 	    }
 
 	    if($conexao){

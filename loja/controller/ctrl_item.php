@@ -14,6 +14,20 @@
 		case 'getSequence';
 			echo getLastItem();
 			break;
+		case 'find';
+			echo getAllItem();
+			break;
+	}
+	
+	function getAllItem(){
+		$conexao = connect();
+		
+		$sql = "SELECT * from item where `nm-item` like '%".$_POST['desItem']."%'";
+				
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+			
+		$arr = mysqli_fetch_array($result);
+		print_r($arr);		
 	}
 
 	function getLastItem(){

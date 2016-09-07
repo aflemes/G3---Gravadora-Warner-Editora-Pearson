@@ -23,11 +23,23 @@
 		$conexao = connect();
 		
 		$sql = "SELECT * from item where `nm-item` like '%".$_POST['desItem']."%'";
-				
+						
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 			
-		$arr = mysqli_fetch_array($result);
-		print_r($arr);		
+		$i = 0;
+		$arrItem = "";
+		
+		while($row = mysqli_fetch_array($result))
+		{
+			$i++;
+			$arrItem[$i]['cd-item']  = $row['cd-item'];
+			$arrItem[$i]['cd-categ'] = $row['cd-categ'];
+			$arrItem[$i]['nm-item']  = $row['nm-item'];
+			$arrItem[$i]['des-item'] = $row['des-item'];
+			$arrItem[$i]['val-item'] = $row['val-item'];
+		}
+		
+		return json_encode($arrItem);
 	}
 
 	function getLastItem(){

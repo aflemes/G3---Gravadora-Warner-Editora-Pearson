@@ -68,12 +68,15 @@
 				},
 				success: function( data )
 				{
-					alert(data);	
+					alert(data);
 					$('#ajax_form')[0].reset();
+					getNextSequence();
 				}	
 			});
-			
-			 jQuery.ajax({
+
+
+			function getNextSequence(){			
+				jQuery.ajax({
 					type: "POST",
 					url: "../controller/ctrl_item.php",
 					data:{
@@ -81,10 +84,11 @@
 					}, 
 					success: function( data )
 					{
+						alert(data);
 						$("#cod-item").val(parseInt(data) + 1);
 					}
 				});
-			return false;
+			}
 		});
 	});
 	</script>

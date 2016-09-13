@@ -3,7 +3,8 @@
 <head>
 	<title>Buscar item</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">	
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/fnd_item.css">	
 	<script type="text/javascript" src="../js/jquery-3.1.0.min.js">
 	</script>
 </head>

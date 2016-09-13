@@ -3,20 +3,22 @@
 <head>
 	<title>Cadastrar item</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">	
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/add_item.css">	
 	<script type="text/javascript" src="../js/jquery-3.1.0.min.js">
 	</script>
 </head>
 <body>
 <?php
 	include "../controller/ctrl_item.php";
+	include "header.html";
 	$codItem = intval(getLastItem()) + 1;
 ?>
 	<form id="ajax_form" method="POST" action="#">
 		<input type="hidden" id="acao">
 
 		<div> 
-			Código do item
+			Cóaadigo do item
 			<input type="text" value=<?php echo $codItem?> disabled="true" name="cod-item" id="cod-item">
 		</div>
 

@@ -84,7 +84,6 @@
 					}, 
 					success: function( data )
 					{
-						alert(data);
 						$("#cod-item").val(parseInt(data) + 1);
 					}
 				});

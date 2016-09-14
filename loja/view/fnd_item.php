@@ -5,10 +5,13 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/fnd_item.css">	
-	<script type="text/javascript" src="../js/jquery-3.1.0.min.js">
-	</script>
 </head>
 <body>
+	<?php
+		session_start();
+		$_SESSION["nomePagina"] = "Busca de Item";
+		include "header.php";
+	?>
 	<form id="ajax_form" method="POST" action="#">
 		<div>
 			<input type="text" id="buscar" name="buscar" maxlength="50">
@@ -22,6 +25,8 @@
 		</div>
 	</form>
 
+	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+	<!--<script type="text/javascript" src="../js/fnd_item.js"></script>-->
 	<script type="text/javascript">		
 		function mountDataGrid(data){
 			var obj = jQuery.parseJSON(data);

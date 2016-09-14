@@ -22,7 +22,7 @@ body {
 
 #menu_logo {
     color: white;
-    padding: 4px 8px;
+    padding: 0 12px;
     background-color: #5d1717;
     height: 100%;
     display: flex;

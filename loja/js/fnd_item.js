@@ -6,11 +6,13 @@ function mountDataGrid(data) {
         return [value];
     });
 
-    document.getElementById("tb-data-grid").innerHTML = "";
+    var tbDataGrid = document.getElementById("tb-data-grid");
+    console.log(obj)
+    tbDataGrid.innerHTML = "";
 
     if (array.length > 0) {
-        document.getElementById("tb-data-grid").innerHTML = "<tr>";
-        document.getElementById("tb-data-grid").innerHTML += "<th>Código do item</th>" +
+        tbDataGrid.innerHTML = "<tr>";
+        tbDataGrid.innerHTML += "<th>Código do item</th>" +
             "<th>Nome do item</th>" +
             "<th>Valor do item</th>" +
             "<th>Categoria</th>" +
@@ -18,17 +20,17 @@ function mountDataGrid(data) {
     }
 
     for (i = 0; i < array.length; i++) {
-        document.getElementById("tb-data-grid").innerHTML += "<tr>";
+        tbDataGrid.innerHTML += "<tr>";
 
         if (array[i]['cod-categ'] == 1) {
-            document.getElementById("tb-data-grid").innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
+            tbDataGrid.innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
                 "<td>" + array[i]['nm-item'] + "</td>" +
                 "<td>" + array[i]['val-item'] + "</td>" +
                 "<td>Livro</td>" +
                 "<td><img class='ico-rm'></img></td>" +
                 "</tr>";
         } else {
-            document.getElementById("tb-data-grid").innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
+            tbDataGrid.innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
                 "<td>" + array[i]['nm-item'] + "</td>" +
                 "<td>" + array[i]['val-item'] + "</td>" +
                 "<td>CD</td>" +
@@ -53,4 +55,11 @@ function getAllInformation() {
             alert("Aconteceu um erro na aplicacao");
         }
     });
+}
+
+function verifyEnterSearch(evt) {
+    if (evt.keyCode == 13) {
+        getAllInformation();
+        evt.preventDefault();
+    }
 }

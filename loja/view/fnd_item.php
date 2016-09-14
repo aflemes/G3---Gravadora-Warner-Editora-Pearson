@@ -12,10 +12,10 @@
 		$_SESSION["nomePagina"] = "Busca de Item";
 		include "header.php";
 	?>
-	
+
 	<form id="ajax_form" method="POST" action="#">
 		<div id="wrapper_busca">
-			<input type="text" id="buscar" name="buscar" maxlength="50">
+			<input type="text" id="buscar" name="buscar" maxlength="50" onkeypress="verifyEnterSearch(event)">
 			<input type="button" class="btn btn-buscar" name="btn-buscar" value="Buscar" onClick="getAllInformation()">
 		</div>
 

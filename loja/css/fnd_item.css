@@ -1,17 +1,39 @@
+#wrapper_busca {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#buscar {
+	height: 42px;
+	width: 100%;
+	max-width: 240px;
+	padding: 4px;
+	box-sizing: border-box;
+}
+
 .btn-buscar{
-	margin-left: 300px;
+	border-radius: 0;
+	padding: 10px 16px;
+	background-color: #16691d;
 }
 
-.cons-item{
-	margin-top: 50px;	
-}
-
-#tb-data-grid{
-	border-style: solid;
-	border: 2px;
+/*Tabela*/
+#tb-data-grid{	
+	border-collapse: collapse;
 	width: 750px;
+	margin: 36px auto 0 auto;
+}
+
+tbody {
+	border: 1px solid #444;
+}
+
+td {
+	text-align: center;
 }
 
 .ico-rm {
 	background-image:url('../../img/rubbish-bin.png');
 }
+/*Tabela*/

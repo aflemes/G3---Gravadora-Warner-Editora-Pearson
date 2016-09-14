@@ -54,6 +54,10 @@ body {
     text-decoration: none;
 }
 
+.menu_botao:not(:last-child) {
+    border-right: 1px solid #444;
+}
+
 .menu_botao:hover {    
     background-color: #79161d;
 }
@@ -104,6 +108,7 @@ body {
 	border-radius: 1px;
 	font-size: 16px;
 	cursor: pointer;
+    background-color: #444;
 }
 
 .btn:hover {

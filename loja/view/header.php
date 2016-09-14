@@ -1,6 +1,6 @@
 <div id="master_menu">
     <div id="menu_logo">
-        Editora Placeholder
+        Loja Placeholder
     </div>
     <span id="pagina">
     <?php        

@@ -9,6 +9,9 @@
 </head>
 <body>
 <?php
+	session_start();
+	$_SESSION["nomePagina"] = "Pedido";
+	include "header.php";	
 	include "../controller/ctrl_pedido.php";
 	$codPedido = intval(getLastPedido()) + 1;
 ?>

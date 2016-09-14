@@ -10,5 +10,6 @@
     <div id="menu_navegacao">
         <a class="menu_botao" href="add_item.php">Cadastro de Item</a>
         <a class="menu_botao" href="fnd_item.php">Busca de Item</a>
+        <a class="menu_botao" href="add_pedido.php">Pedido</a>
     </div>
 </div>

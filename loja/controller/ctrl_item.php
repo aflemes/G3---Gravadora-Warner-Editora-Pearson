@@ -17,6 +17,19 @@
 		case 'find';
 			echo getAllItem();
 			break;
+		case 'findUnique';
+			echo getNameItem();
+			break;
+	}
+
+	function getNameItem(){
+		$conexao = connect();
+		
+		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%' or `cd-item` = ".$_POST['item'];
+						
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+
 	}
 	
 	function getAllItem(){

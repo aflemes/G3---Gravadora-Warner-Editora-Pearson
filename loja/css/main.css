@@ -10,6 +10,10 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+.inverter-icon-horizontal {
+    transform: rotateY(180deg);
+}
+
 #master_menu {
     display: flex;
     justify-content: space-between;
@@ -20,8 +24,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#menu_logo {
-    color: white;
+#menu_logo {    
     padding: 0 12px;
     background-color: #5d1717;
     height: 100%;
@@ -29,6 +32,16 @@ body {
     align-items: center;
     justify-content: center;    
     box-sizing: border-box;
+}
+
+#menu_logo .icon-logo {
+    color: white;
+    margin-right: 10px;
+    font-size: 22px; 
+}
+
+#menu_logo_texto {
+    color: white;
 }
 
 #pagina {
@@ -41,6 +54,11 @@ body {
     align-items: center;
     justify-content: flex-end;
     height: 100%;
+}
+
+#menu_navegacao .icon-menu {
+    margin-left: 6px;
+    font-size: 20px;
 }
 
 .menu_botao {

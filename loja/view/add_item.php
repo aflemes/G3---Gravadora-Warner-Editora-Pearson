@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Adicionar item</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/add_item.css">		
 </head>

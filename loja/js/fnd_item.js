@@ -6,37 +6,29 @@ function mountDataGrid(data) {
         return [value];
     });
 
-    var tbDataGrid = document.getElementById("tb-data-grid");
-    console.log(obj)
-    tbDataGrid.innerHTML = "";
+    var tabela = document.getElementById("tb-data-grid");
+    tabela.innerHTML = "";
 
     if (array.length > 0) {
-        tbDataGrid.innerHTML = "<tr>";
-        tbDataGrid.innerHTML += "<th>Código do item</th>" +
-            "<th>Nome do item</th>" +
-            "<th>Valor do item</th>" +
-            "<th>Categoria</th>" +
+        tabela.innerHTML += "<tr>" +
+            "   <th>Código do item</th>" +
+            "   <th>Nome do item</th>" +
+            "   <th>Valor do item</th>" +
+            "   <th>Categoria</th>" +
+            "   <th>Excluir</th>" +
+            "   <th>Editar</th>" +
             "</tr>";
     }
 
-    for (i = 0; i < array.length; i++) {
-        tbDataGrid.innerHTML += "<tr>";
-
-        if (array[i]['cod-categ'] == 1) {
-            tbDataGrid.innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
-                "<td>" + array[i]['nm-item'] + "</td>" +
-                "<td>" + array[i]['val-item'] + "</td>" +
-                "<td>Livro</td>" +
-                "<td><img class='ico-rm'></img></td>" +
-                "</tr>";
-        } else {
-            tbDataGrid.innerHTML += "	<td>" + array[i]['cd-item'] + "</td>" +
-                "<td>" + array[i]['nm-item'] + "</td>" +
-                "<td>" + array[i]['val-item'] + "</td>" +
-                "<td>CD</td>" +
-                "<td><img class='ico-rm'></img></td>" +
-                "</tr>";
-        }
+    for (i = 0, len = array.length; i < len; i++) {
+        tabela.innerHTML += "<tr>" +
+            "   <td>" + array[i]['cd-item'] + "</td>" +
+            "   <td>" + array[i]['nm-item'] + "</td>" +
+            "   <td>" + array[i]['val-item'] + "</td>" +
+            "   <td>" + (array[i]['cd-categ'] == 1 ? "Livro" : "CD") + "</td>" +
+            "   <td><i class='fa fa-trash icon-excluir'></i></td>" +
+            "   <td><i class='fa fa-pencil icon-editar'></i></td>" +
+            "</tr>";
     }
 }
 

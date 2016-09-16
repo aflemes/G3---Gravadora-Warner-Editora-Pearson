@@ -3,6 +3,7 @@
 <head>
 	<title>Buscar item</title>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/fnd_item.css">	
 </head>

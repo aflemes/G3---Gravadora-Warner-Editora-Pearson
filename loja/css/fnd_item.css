@@ -19,7 +19,7 @@
 }
 
 /*Tabela*/
-#tb-data-grid{	
+#tb-data-grid {	
 	border-collapse: collapse;
 	width: 750px;
 	margin: 36px auto 0 auto;
@@ -33,7 +33,15 @@ td {
 	text-align: center;
 }
 
-.ico-rm {
-	background-image:url('../../img/rubbish-bin.png');
+#tb-data-grid i {
+	cursor: pointer;
+}
+
+.icon-excluir {
+	color: #a90808;	
+}
+
+.icon-editar {
+	color: #92700b;	
 }
 /*Tabela*/

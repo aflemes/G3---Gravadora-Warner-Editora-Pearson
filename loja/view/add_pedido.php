@@ -4,8 +4,8 @@
 	<title>Cadastrar novo pedido de compra</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">	
-	<script type="text/javascript" src="../js/jquery-3.1.0.min.js">
-	</script>
+	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 </head>
 <body>
 <?php
@@ -24,7 +24,7 @@
 		</div>
 		<div> 
 			Item
-			<input type="text" name="item" id="item" maxlength="40" onblur="getDescrItem()">
+			<input type="text" name="item" id="item" maxlength="40" onkeyup="getDescrItem()">
 		</div>
 		<div>
 
@@ -35,18 +35,25 @@
 	</form>
 </body>
 <script type="text/javascript">
-	function getDescrItem()`{
+	function getDescrItem(){
 		jQuery.ajax({
 				type: "POST",
 				url: "../controller/ctrl_item.php",
 				data:{
 					item: $("#item").val(),
-					action: 'findUnique'
+					action: 'findUniqueByReference'
 				},
 				success: function( data )
 				{
 					if (data != "NaN"){
-						
+						//var obj = jQuery.parseJSON(data);
+
+						alert(data);
+
+						$("#item").autocomplete({                        
+							source: obj, 
+							minLength:1                  
+						}); 
 					}
 				}	
 			});

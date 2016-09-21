@@ -3,9 +3,30 @@
 <head>
 	<title>Cadastrar novo pedido de compra</title>
 	<meta charset="UTF-8">
+	<!-- JQUERY <!-->
+	<!--<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script><!-->
+	<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<!-- DATATABLE <!-->
+	<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="../css/main.css">	
-	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">	
+	<link rel="stylesheet" type="text/css" href="../css/add_pedido.css">	
+	
 	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript" language="javascript" class="init">
+		$(document).ready(function() {
+			$('#example').DataTable({
+				"sDom": "rt",
+				"oLanguage": {
+					"sEmptyTable": "Sem registro"
+				}
+			});
+		});
+	</script>
+	
 </head>
 <body>
 <?php
@@ -17,21 +38,39 @@
 ?>
 	<form id="ajax_form" method="POST" action="#">
 		<input type="hidden" id="acao">
-
-		<div> 
-			Código do Pedido
-			<input type="text" value=<?php echo $codPedido?> disabled="true" name="cod-pedido" id="cod-pedido">
+		<div class="linha">
+			<div class="wrapper_input_text"> 
+				<label for="cod-pedido">Código do Pedido</label>
+				<input type="text" value=<?php echo $codPedido?> disabled="true" name="cod-pedido" id="cod-pedido">	
+			</div>
+			<div class="wrapper_input_text"> 
+				&nbsp;
+			</div>
 		</div>
-		<div> 
-			Item
-			<input type="text" name="item" id="item" maxlength="40" onkeyup="getDescrItem()">
+		<div class="linha">
+			<div class="wrapper_input_text"> 
+				<label for="item">Item</label>
+				<input type="text" name="item" id="item" maxlength="40" onkeyup="getDescrItem()">
+				<input type="button" class="button-add"/>
+			</div>
+
+			<div class="wrapper_input_text"> 
+				&nbsp;
+			</div>
 		</div>
 		<div>
-
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<th>Item</th>
+					<th>Descrição</th>
+					<th>Qtde.</th>
+					<th>Valor</th>
+				</thead>
+			</table>
 		</div>
-		<div>
+		<!--<div>
 			<input type="submit" value="Salvar" class="btn-salvar">
-		</div>
+		</div><!-->
 	</form>
 </body>
 <script type="text/javascript">
@@ -46,13 +85,16 @@
 				success: function( data )
 				{
 					if (data != "NaN"){
-						//var obj = jQuery.parseJSON(data);
+						var obj = jQuery.parseJSON(data);
+						var elements = new Array();
 
-						alert(data);
-
+						for(i=1;;i++){
+							if (obj[i] != null)
+								elements.push(obj[i]);
+							else break;
+						}
 						$("#item").autocomplete({                        
-							source: obj, 
-							minLength:1                  
+							source: elements
 						}); 
 					}
 				}	

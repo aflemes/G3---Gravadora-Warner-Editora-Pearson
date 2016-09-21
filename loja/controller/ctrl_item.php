@@ -25,13 +25,12 @@
 	function getNameItem(){
 		$conexao = connect();
 		
-		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%' or `cd-item` = ".$_POST['item'];
-		return $sql;
+		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%'";
 						
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
 		$arrItem = "";
-
+		$i = 0;
 		
 		while($row = mysqli_fetch_array($result))
 		{
@@ -39,7 +38,7 @@
 			$arrItem[$i] = $row['nm-item'];
 		}
 
-		if (i == 0)
+		if ($i == 0)
 			return 'NaN';
 		else return json_encode($arrItem);
 	}

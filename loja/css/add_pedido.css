@@ -1,0 +1,35 @@
+#ajax_form {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	max-width: 70%;	
+	margin: 0 auto;
+}
+
+[class^=wrapper_input] {
+	justify-content: flex-end;
+}
+
+[class^=wrapper_input] label {
+	min-width: 174px;
+	text-align: right;
+}
+
+.btn-salvar {
+	margin: 20px auto 0 auto;
+	background-color: #16691d;
+}
+
+input.button-add {
+    background-image: url(../img/buttons/add-24x24.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 24px;           /* make this the size of your image */
+    width: 24px;
+    padding-left: 24px;     /* make text start to the right of the image */
+    margin-left: 16px;
+    vertical-align: middle; /* align the text vertically centered */
+}

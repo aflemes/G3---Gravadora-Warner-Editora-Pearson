@@ -17,7 +17,7 @@
 		case 'find';
 			echo getAllItem();
 			break;
-		case 'findUnique';
+		case 'findUniqueByReference';
 			echo getNameItem();
 			break;
 	}
@@ -25,11 +25,22 @@
 	function getNameItem(){
 		$conexao = connect();
 		
-		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%' or `cd-item` = ".$_POST['item'];
+		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%'";
 						
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
+		$arrItem = "";
+		$i = 0;
+		
+		while($row = mysqli_fetch_array($result))
+		{
+			$i++;
+			$arrItem[$i] = $row['nm-item'];
+		}
 
+		if ($i == 0)
+			return 'NaN';
+		else return json_encode($arrItem);
 	}
 	
 	function getAllItem(){

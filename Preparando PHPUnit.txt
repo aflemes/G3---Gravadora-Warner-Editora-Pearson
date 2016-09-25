@@ -1,0 +1,37 @@
+﻿Preparando o PHPUnit:
+- Baixar o PHP, caso não esteja disponível na máquina (http://php.net/manual/en/install.windows.legacy.index.php#install.windows.legacy.commandline)
+- O executável do PHP deve estar disponível no PATH da máquina
+- Create a directory for PHP binaries; e.g., C:\bin
+- Append ;C:\bin to your PATH environment variable (related help)
+- Download https://phar.phpunit.de/phpunit.phar and save the file as C:\bin\phpunit.phar
+- Open a command line (e.g., press Windows+R » type cmd » ENTER)
+- Create a wrapping batch script (results in C:\bin\phpunit.cmd):
+  C:\Users\username> cd C:\bin
+  C:\bin> echo @php "%~dp0phpunit.phar" %* > phpunit.cmd
+  C:\bin> exit
+- Open a new command line and confirm that you can execute PHPUnit from any path:
+  C:\Users\username> phpunit --version
+  PHPUnit x.y.z by Sebastian Bergmann and contributors.
+
+Test Execution
+➜ phpunit --bootstrap src/autoload.php tests/MoneyTest
+PHPUnit 5.5.0 by Sebastian Bergmann and contributors.
+
+....................
+
+Time: 121 ms, Memory: 4.50Mb
+
+OK (20 tests, 39 assertions)
+
+Lets have a look at what the three parts of above's invokation mean:
+
+phpunit invokes the PHPUnit command-line test runner. We assume that you have downloaded phpunit.phar (see above) and put it into your $PATH as phpunit.
+
+--bootstrap src/autoload.php instructs the PHPUnit command-line test runner to include src/autoload.php (which can be found here) before the test execution. Such a bootstrap script is commonly used to set up autoloading for the classes that are to be tested.
+
+tests/MoneyTest instructs the PHPUnit command-line test runner to execute the tests of the MoneyTest class that is declared in tests/MoneyTest.php.
+
+Using tests instead of tests/MoneyTest would instruct the PHPUnit command-line test runner to execute all tests found declared in *Test.php sourcecode files in the tests directory.
+
+https://phpunit.de/getting-started.html
+https://phpunit.de/manual/current/en/installation.html

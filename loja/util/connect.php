@@ -1,5 +1,5 @@
 <?php
-// nós conectamos com example.com na porta 3307
+	// nós conectamos com example.com na porta 3307
 	function connect(){		
 		$conexao = mysqli_connect('localhost', 'root', '');
 		if (!$conexao) {
@@ -11,5 +11,9 @@
 		}
 
 		return $conexao;
+	}
+
+	function disconnect($connection){
+		//mysqli_close($connection) or die("Não foi possível desconectar");
 	}
 ?>

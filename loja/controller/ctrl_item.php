@@ -1,5 +1,6 @@
 <?php
-	include "../util/connect.php";
+	include_once "../util/connect.php";
+	include_once "ctrl_estoque.php";
 
 	$acao = "";
 
@@ -35,7 +36,9 @@
 		while($row = mysqli_fetch_array($result))
 		{
 			$i++;
-			$arrItem[$i] = $row['nm-item'];
+			$arrItem[$i]["cd-item"] = $row['cd-item'];
+			$arrItem[$i]["nm-item"] = $row['nm-item'];
+			$arrItem[$i]["val-item"] = $row['val-item'];
 		}
 
 		if ($i == 0)

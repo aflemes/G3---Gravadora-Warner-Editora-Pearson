@@ -1,5 +1,5 @@
 <?php
-	include "../util/connect.php";
+	include_once "../util/connect.php";
 
 	$acao = "";
 
@@ -14,11 +14,14 @@
 		case 'insert':
 			echo insertPedido();
 			break;
-		case 'find';
+		case 'find':
 			echo getAllPedido();
 			break;
+		case 'saveItemOrder':
+			echo insertItem();
+			break;
 	}
-	
+
 	function getLastPedido(){
 		$conexao = connect();
 
@@ -31,6 +34,11 @@
 
 	function insertItem(){
 		$conexao = connect();
+
+		foreach($_POST["elements"] as $k=>$arr){
+			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
+			$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+		}
 	}
 	
 ?>

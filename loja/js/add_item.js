@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     jQuery('#ajax_form').submit(function () {
         var dados = jQuery(this).serialize();
-
+		
         jQuery.ajax({
             type: "POST",
             url: "../controller/ctrl_item.php",
@@ -18,7 +18,10 @@ jQuery(document).ready(function () {
                 alert(data);
                 $('#ajax_form')[0].reset();
                 getNextSequence();
-            }
+            },
+			error: function (data){
+				alert(data);
+			}
         });
 
 

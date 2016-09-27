@@ -1,6 +1,6 @@
 <?php
 	include_once "../util/connect.php";
-	include_once "ctrl_estoque.php";
+	/*include_once "ctrl_estoque.php";*/
 
 	$acao = "";
 

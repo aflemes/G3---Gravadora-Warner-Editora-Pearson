@@ -21,7 +21,7 @@
 <body>
 	<?php
 		session_start();
-		$_SESSION["nomePagina"] = "Cadastro de Estoque";
+		$_SESSION["nomePagina"] = "Estoque";
 		include "../util/connect.php";
 		include "../controller/ctrl_estoque.php";
 		include "header.php";
@@ -35,17 +35,11 @@
 				<label for="item">Item</label>			
 				<input type="text" name="item" id="item" maxlength="40" onkeypress="getDescrItem()">
 			</div>
-			<div class="wrapper_input_text"> 
-				&nbsp;
-			</div>
 		</div>
 		<div class="linha">
 			<div class="wrapper_input_text"> 
 				<label for="item">Quantidade</label>			
 				<input type="text" name="qtde-item" id="qtde-item" maxlength="40">
-			</div>
-			<div class="wrapper_input_text"> 
-				&nbsp;
 			</div>
 		</div>
 		

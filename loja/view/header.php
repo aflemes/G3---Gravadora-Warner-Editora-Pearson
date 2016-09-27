@@ -17,6 +17,10 @@
             <span>Busca de Item</span>
             <i class='fa fa-search icon-menu inverter-icon-horizontal'></i>
         </a>
+        <a class="menu_botao" href="add_estoque.php">
+            <span>Estoque</span>            
+            <i class='fa fa-archive icon-menu'></i>
+        </a>
         <a class="menu_botao" href="add_pedido.php">
             <span>Pedido</span>            
             <i class='fa fa-shopping-cart icon-menu'></i>

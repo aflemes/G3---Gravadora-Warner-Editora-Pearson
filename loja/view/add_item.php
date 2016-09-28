@@ -23,19 +23,19 @@
 
 		<div class="linha">
 			<div class="wrapper_input_text"> 
-				<label for="cod-item">Código do item</label>
+				<label for="cod-item">Código do Item</label>
 				<input type="text" value=<?php echo $codItem?> disabled="true" name="cod-item" id="cod-item">
 			</div>
 
 			<div class="wrapper_input_text"> 
-				<label for="des-item">Descrição do item</label>			
+				<label for="des-item">Descrição do Item *</label>			
 				<input type="text" maxlength="40" name="des-item" id="des-item">
 			</div>
 		</div>
 
 		<div class="linha">
 			<div class="wrapper_input_select">
-				<label for="cod-categ">Categoria do Item</label>			
+				<label for="cod-categ">Categoria do Item *</label>			
 				<select name="cod-categ" id="cod-categ">
 					<option value="1">Livro</option>
 					<option value="2">CD</option>
@@ -43,7 +43,7 @@
 			</div>
 			
 			<div class="wrapper_input_text">
-				<label for="val-item">Preço do Item</label>			
+				<label for="val-item">Preço do Item *</label>			
 				<input type="text" name="val-item" id="val-item">
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 			</div>
 		</div>		
 		
-		<input type="submit" value="Adicionar Item" class="btn btn-salvar">
+		<a id="btn-adicionar" class="btn btn-salvar">Adicionar Item</a>
 	</form>
 	
 	<script type="text/javascript" src="../js/add_item.js"></script>

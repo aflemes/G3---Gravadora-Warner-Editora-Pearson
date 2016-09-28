@@ -133,3 +133,7 @@ body {
 .btn:hover {
     opacity: 0.9;
 }
+
+.sweet-alert button {
+    background-color: #444 !important;
+}

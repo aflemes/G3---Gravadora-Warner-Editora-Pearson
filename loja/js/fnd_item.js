@@ -40,11 +40,11 @@ function getAllInformation() {
             desItem: $("#buscar").val(),
             action: 'find'
         },
-        success: function (data) {
+        success: function (data) {            
             mountDataGrid(data);
         },
         error: function (data) {
-            alert("Aconteceu um erro na aplicacao");
+            swal("Oops...", "Aconteceu um erro na aplicação.", "error");
         }
     });
 }

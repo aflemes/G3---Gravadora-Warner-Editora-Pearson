@@ -79,8 +79,8 @@
 		return $row[0];
 	}
 
-	function insertItem(){
-		$conexao = connect();
+	function insertItem(){		
+		$conexao = connect();				
 
 		$codItem  = $_POST["codItem"];
 		$desItem  = $_POST["desItem"];
@@ -91,9 +91,7 @@
 		$insert = "INSERT INTO item values('".$desItem."',".$codCateg.",".$codItem.",'".$obsItem."',".$valItem.")";
 		$resultado = mysqli_query($conexao,$insert);
 
-		if ($resultado){
-			return "Registro foi salvo com sucesso!";
-		}
+		if ($resultado) return "Registro foi salvo com sucesso!";		
 		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
 	}
 	

@@ -1,7 +1,19 @@
 jQuery(document).ready(function () {
-    jQuery('#ajax_form').submit(function () {
+    $("#btn-adicionar").click(function () {
+        if (!$("#des-item").val()) {
+            swal("Oops...", "Preencha a Descrição do Item.", "warning");
+        } else if (!$("#cod-categ").val()) {
+            swal("Oops...", "Preencha a Categoria do Item.", "warning");
+        } else if (!$("#val-item").val()) {
+            swal("Oops...", "Preencha o Preço do Item.", "warning");
+        } else {
+            $('#ajax_form').submit();
+        }
+    });
+
+    $('#ajax_form').submit(function () {
         var dados = jQuery(this).serialize();
-		
+
         jQuery.ajax({
             type: "POST",
             url: "../controller/ctrl_item.php",
@@ -19,23 +31,22 @@ jQuery(document).ready(function () {
                 $('#ajax_form')[0].reset();
                 getNextSequence();
             },
-			error: function (data){
-				alert(data);
-			}
+            error: function (data) {
+                swal("Erro...", data, "error");
+            }
         });
-
-
-        function getNextSequence() {
-            jQuery.ajax({
-                type: "POST",
-                url: "../controller/ctrl_item.php",
-                data: {
-                    action: 'getSequence'
-                },
-                success: function (data) {
-                    $("#cod-item").val(parseInt(data) + 1);
-                }
-            });
-        }
     });
+
+    function getNextSequence() {
+        jQuery.ajax({
+            type: "POST",
+            url: "../controller/ctrl_item.php",
+            data: {
+                action: 'getSequence'
+            },
+            success: function (data) {
+                $("#cod-item").val(parseInt(data) + 1);
+            }
+        });
+    };
 });

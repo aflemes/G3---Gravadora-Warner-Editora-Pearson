@@ -39,7 +39,7 @@ $(document).ready(function() {
             {
                 if (data != ""){
                     $('#ajax_form')[0].reset();
-                    alert(data);
+                    swal("Mensagem", data);
                 }
             }   
         });

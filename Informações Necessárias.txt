@@ -1,0 +1,8 @@
+Informações Necessárias
+
+1 - Incluir no Formulário Busca de Item a quantidade de intens em estoque
+2 - Implementar o Excluir e o Editar
+3 - No menu Estoque não permite inserir mais unidades em estoque de itens já cadastrados
+4 - O Pedido está permitindo ser inserido sem ter cadastrado quantidade do item em estoque
+5 - Esta permitindo cadastrar item com valor ZERO
+6 - Esta permitindo cadastrar item sem o Nome do Item

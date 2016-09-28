@@ -1,8 +1,8 @@
 <div id="master_menu">
-    <div id="menu_logo">
+    <a href="../index.php" id="menu_logo">
         <i class='fa fa-shopping-bag icon-logo'></i>
         <span id="menu_logo_texto">Loja Placeholder</span>
-    </div>
+    </a>
     <span id="pagina">
     <?php        
         echo $_SESSION ["nomePagina"];

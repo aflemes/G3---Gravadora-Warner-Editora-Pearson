@@ -1,22 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>Estoque</title>
-	<meta charset="UTF-8">
+	<title>Estoque</title>	
 
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/add_estoque.css">
+	<?php
+		include "headFiles.php";
+	?>
 	
-	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>	
-	<!--><script type="text/javascript" src="http://code.jquery.com/jquery-1.12.3.min.js"></script><!-->
-
-	<!-- DATATABLES <!-->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/add_estoque.css">					
 	
-	<link rel="stylesheet" type="text/css" href="../css/main.css">	
-	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">	
-	
-	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>		
+	<script type="text/javascript" src="../js/jquery-ui.min.js"></script>	
 </head>
 <body>
 	<?php

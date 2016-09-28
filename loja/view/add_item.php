@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
 	<title>Adicionar item</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	
+	<?php
+		include "headFiles.php";
+	?>
+
 	<link rel="stylesheet" type="text/css" href="../css/add_item.css">		
 </head>
 <body>
@@ -55,8 +57,7 @@
 		
 		<input type="submit" value="Adicionar Item" class="btn btn-salvar">
 	</form>
-
-	<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+	
 	<script type="text/javascript" src="../js/add_item.js"></script>
 </body>
 </html>

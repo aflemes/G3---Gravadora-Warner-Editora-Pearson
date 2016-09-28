@@ -15,7 +15,7 @@
 
 	function insertEstoque(){		
 		$conexao = connect();
-
+		
 		$item = $_POST["item"];
 		$item = getCodItem($item);
 

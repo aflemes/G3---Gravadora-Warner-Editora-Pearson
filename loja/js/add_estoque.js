@@ -27,8 +27,6 @@ function getDescrItem() {
 }
 $(document).ready(function() {
     $("#btn-salvar").click(function(){
-        alert("oi");
-
         jQuery.ajax({
             type: "POST",
             url: "../controller/ctrl_estoque.php",

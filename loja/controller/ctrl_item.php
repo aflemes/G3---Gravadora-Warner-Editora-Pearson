@@ -21,6 +21,9 @@
 		case 'findUniqueByReference';
 			echo getNameItem();
 			break;
+		case 'removeUniqueItem';
+			echo deleteItem($_POST["codItem"]);
+			break;
 	}
 
 	function getNameItem(){
@@ -93,6 +96,16 @@
 
 		if ($resultado) return "Registro foi salvo com sucesso!";		
 		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
+	}
+
+	function deleteItem($codItem){
+		$conexao = connect();
+
+		$delete = "DELETE FROM `item` WHERE `cd-item` = ".$codItem;
+		$resultado = mysqli_query($conexao,$delete);
+
+		if ($resultado) return "Registro removido com sucesso!";
+		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";	
 	}
 	
 ?>

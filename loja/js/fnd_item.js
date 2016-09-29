@@ -21,7 +21,7 @@ function mountDataGrid(data) {
     }
 
     for (i = 0, len = array.length; i < len; i++) {
-        tabela.innerHTML += "<tr>" +
+        tabela.innerHTML += "<tr id='" + array[i]['cd-item'] +"'>" +
             "   <td>" + array[i]['cd-item'] + "</td>" +
             "   <td>" + array[i]['nm-item'] + "</td>" +
             "   <td>" + array[i]['val-item'] + "</td>" +
@@ -36,7 +36,22 @@ function removeItem(codItem){
 	var resposta = confirm("Voce tem certeza que deseja remover este item?");
 	
 	if (resposta){
-			
+       //remove nodo
+       jQuery.ajax({
+            type: "POST",
+            url: "../controller/ctrl_item.php",
+            data: {
+                codItem: codItem,
+                action: 'removeUniqueItem'
+            },
+            success: function (data) {            
+                swal(data);
+                $("#"+codItem).css("display","none");
+            },
+            error: function (data) {
+                swal("Oops...", "Aconteceu um erro na aplicação.", "error");
+            }
+        });
 	}
 }
 

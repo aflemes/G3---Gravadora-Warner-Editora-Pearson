@@ -28,7 +28,7 @@ jQuery(document).ready(function () {
                 action: 'insert'
             },
             success: function (data) {
-                alert(data);
+                swal(data);
                 $('#ajax_form')[0].reset();
                 getNextSequence();
             },

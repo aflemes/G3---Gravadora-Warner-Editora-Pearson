@@ -26,10 +26,18 @@ function mountDataGrid(data) {
             "   <td>" + array[i]['nm-item'] + "</td>" +
             "   <td>" + array[i]['val-item'] + "</td>" +
             "   <td>" + (array[i]['cd-categ'] == 1 ? "Livro" : "CD") + "</td>" +
-            "   <td><i class='fa fa-trash icon-excluir'></i></td>" +
+            "   <td><i class='fa fa-trash icon-excluir' onclick='removeItem("+array[i]['cd-item']+")'></i></td>" +
             "   <td><i class='fa fa-pencil icon-editar'></i></td>" +
             "</tr>";
     }
+}
+
+function removeItem(codItem){
+	var resposta = confirm("Voce tem certeza que deseja remover este item?");
+	
+	if (resposta){
+			
+	}
 }
 
 function getAllInformation() {

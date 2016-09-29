@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-    $("#btn-adicionar").click(function () {
+	$("#btn-adicionar").click(function () {
         if (!$("#des-item").val()) {
             swal("Oops...", "Preencha a Descrição do Item.", "warning");
         } else if (!$("#cod-categ").val()) {
@@ -7,18 +7,19 @@ jQuery(document).ready(function () {
         } else if (!$("#val-item").val()) {
             swal("Oops...", "Preencha o Preço do Item.", "warning");
         } else {
-            $('#ajax_form').submit();
+            addItem();
         }
     });
+	
+	$("#val-item").keypress(function(){
+		$("#val-item").val(mascaraValor($("#val-item").val()));
+	});
 
-    $('#ajax_form').submit(function () {
-        var dados = jQuery(this).serialize();
-
-        jQuery.ajax({
+	function addItem(){		
+		jQuery.ajax({
             type: "POST",
             url: "../controller/ctrl_item.php",
             data: {
-                data: dados,
                 codItem: $("#cod-item").val(),
                 desItem: $("#des-item").val(),
                 codCateg: $("#cod-categ").val(),
@@ -32,10 +33,10 @@ jQuery(document).ready(function () {
                 getNextSequence();
             },
             error: function (data) {
-                swal("Erro...", data, "error");
+                swal("Erro...", data, "error");			
             }
         });
-    });
+    }
 
     function getNextSequence() {
         jQuery.ajax({
@@ -49,4 +50,11 @@ jQuery(document).ready(function () {
             }
         });
     };
+	function mascaraValor(valor) {
+		valor = valor.toString().replace(/\D/g,"");
+		valor = valor.toString().replace(/(\d)(\d{8})$/,"$1.$2");
+		valor = valor.toString().replace(/(\d)(\d{5})$/,"$1.$2");
+		valor = valor.toString().replace(/(\d)(\d{2})$/,"$1,$2");
+		return valor                    
+	}
 });

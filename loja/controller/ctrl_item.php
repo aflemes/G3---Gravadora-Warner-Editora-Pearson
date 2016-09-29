@@ -83,12 +83,12 @@
 		$conexao = connect();				
 
 		$codItem  = $_POST["codItem"];
-		$desItem  = $_POST["desItem"];
+		$desItem  = addslashes($_POST["desItem"]);
 		$codCateg = $_POST["codCateg"];
 		$valItem  = $_POST["valItem"];
-		$obsItem  = $_POST["obsItem"];
+		$obsItem  = addslashes($_POST["obsItem"]);
 
-		$insert = "INSERT INTO item values('".$desItem."',".$codCateg.",".$codItem.",'".$obsItem."',".$valItem.")";
+		$insert = "INSERT INTO item values('".$desItem."',".$codCateg.",".$codItem.",'".$obsItem."','".$valItem."')";		
 		$resultado = mysqli_query($conexao,$insert);
 
 		if ($resultado) return "Registro foi salvo com sucesso!";		

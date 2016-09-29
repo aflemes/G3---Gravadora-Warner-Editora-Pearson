@@ -44,14 +44,14 @@
 			
 			<div class="wrapper_input_text">
 				<label for="val-item">Preço do Item *</label>			
-				<input type="text" name="val-item" id="val-item">
+				<input type="text" name="val-item" id="val-item" maxlength="10">
 			</div>
 		</div>
 
 		<div class="linha">
 			<div class="wrapper_input_textarea">
 				<label for="obs-item">Observacoes do Item</label>
-				<textarea rows="4" cols="50" name="obs-item" id="obs-item"></textarea>
+				<textarea rows="4" cols="50" name="obs-item" id="obs-item" maxlength="255"></textarea>
 			</div>
 		</div>		
 		

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Buscar item</title>
+	<meta http-equiv="Cache-Control" content="no-store" />
 	
 	<?php
 		include "headFiles.php";

@@ -1,7 +1,10 @@
 <?php
-	include_once "../util/connect.php";
-	/*include_once "ctrl_estoque.php";*/
+	if(!isset($_SESSION)){
+    	session_start();
+	}
 
+	include_once "../util/connect.php";
+	
 	$acao = "";
 
 	if (isset($_POST["action"])){
@@ -23,6 +26,12 @@
 			break;
 		case 'removeUniqueItem';
 			echo deleteItem($_POST["codItem"]);
+			break;
+		case 'beforeModify';
+			echo beforeModify($_POST["codItem"]);
+			break;
+		case 'modifyItem';
+			echo modifyItem();
 			break;
 	}
 
@@ -67,6 +76,16 @@
 			$arrItem[$i]['nm-item']  = $row['nm-item'];
 			$arrItem[$i]['des-item'] = $row['des-item'];
 			$arrItem[$i]['val-item'] = $row['val-item'];
+
+			$sqlEstoque = "SELECT * from estoque where `cd-item` = ".$row['cd-item'];
+						
+			$resultEstoque = mysqli_query($conexao,$sqlEstoque) or die(mysqli_error($conexao));
+
+			if ($result){
+				$estoqueRow = mysqli_fetch_array($resultEstoque);
+				$arrItem[$i]['qtde-item'] =	$estoqueRow[1];			
+			}
+			else $arrItem[$i]['qtde-item'] = 0;
 		}
 		
 		return json_encode($arrItem);
@@ -108,4 +127,43 @@
 		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";	
 	}
 	
+	function beforeModify($codItem){
+		$conexao = connect();
+		
+		$sql = "SELECT * from item where `cd-item` = ".$codItem;
+						
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+		$rowcount=mysqli_num_rows($result);
+
+		if ($rowcount > 0){
+			$_SESSION["acao"] = "modify";
+
+			$row = mysqli_fetch_array($result);
+			$_SESSION["nmItem"]    = $row[0];
+			$_SESSION["categItem"] = $row[1];
+			$_SESSION["codItem"]   = $row[2];
+			$_SESSION["obsItem"]   = $row[3];
+			$_SESSION["valItem"]   = $row[4];
+		}
+		else return mysqli_erro($conexao);
+	}
+
+	function modifyItem(){
+		$conexao = connect();
+
+		$codItem  = $_POST["codItem"];
+		$desItem  = addslashes($_POST["desItem"]);
+		$codCateg = $_POST["codCateg"];
+		$valItem  = $_POST["valItem"];
+		$obsItem  = addslashes($_POST["obsItem"]);
+		
+	    $updateSQL = "UPDATE `item` SET `nm-item`='".$desItem."',`cd-categ`=".$codCateg.",`des-item`='".$obsItem."',`val-item`='".$valItem."'
+	    			WHERE `cd-item` = ".$codItem;
+						
+		$result = mysqli_query($conexao,$updateSQL) or die(mysqli_error($conexao));
+
+		if ($result) return "Registro modificado com sucesso!";		
+		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
+	}
 ?>

@@ -14,6 +14,7 @@ function mountDataGrid(data) {
             "   <th>Código do item</th>" +
             "   <th>Nome do item</th>" +
             "   <th>Valor do item</th>" +
+            "   <th>Qtde.</th>" +
             "   <th>Categoria</th>" +
             "   <th>Excluir</th>" +
             "   <th>Editar</th>" +
@@ -25,9 +26,10 @@ function mountDataGrid(data) {
             "   <td>" + array[i]['cd-item'] + "</td>" +
             "   <td>" + array[i]['nm-item'] + "</td>" +
             "   <td>" + array[i]['val-item'] + "</td>" +
+            "   <td>" + array[i]['qtde-item'] + "</td>" +
             "   <td>" + (array[i]['cd-categ'] == 1 ? "Livro" : "CD") + "</td>" +
             "   <td><i class='fa fa-trash icon-excluir' onclick='removeItem("+array[i]['cd-item']+")'></i></td>" +
-            "   <td><i class='fa fa-pencil icon-editar'></i></td>" +
+            "   <td><i class='fa fa-pencil icon-editar' onclick='modifyItem("+array[i]['cd-item']+")'></i></td>" +
             "</tr>";
     }
 }
@@ -53,6 +55,23 @@ function removeItem(codItem){
             }
         });
 	}
+}
+
+function modifyItem(codItem){
+    jQuery.ajax({
+        type: "POST",
+        url: "../controller/ctrl_item.php",
+        data: {
+            codItem: codItem,
+            action: 'beforeModify'
+        },
+        success: function (data){
+            location.href = "../view/add_item.php";
+        },
+        error: function (data) {
+            swal("Oops...", "Aconteceu um erro na aplicação.", "error");
+        }
+    });
 }
 
 function getAllInformation() {

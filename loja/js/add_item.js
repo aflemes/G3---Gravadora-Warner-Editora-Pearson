@@ -10,6 +10,18 @@ jQuery(document).ready(function () {
             addItem();
         }
     });
+
+    $("#btn-modificar").click(function () {
+        if (!$("#des-item").val()) {
+            swal("Oops...", "Preencha a Descrição do Item.", "warning");
+        } else if (!$("#cod-categ").val()) {
+            swal("Oops...", "Preencha a Categoria do Item.", "warning");
+        } else if (!$("#val-item").val()) {
+            swal("Oops...", "Preencha o Preço do Item.", "warning");
+        } else {
+            modifyItem();
+        }
+    });
 	
 	$("#val-item").keypress(function(){
 		$("#val-item").val(mascaraValor($("#val-item").val()));
@@ -28,7 +40,7 @@ jQuery(document).ready(function () {
                 action: 'insert'
             },
             success: function (data) {
-                swal(data);
+                swal(data,"success");
                 $('#ajax_form')[0].reset();
                 getNextSequence();
             },
@@ -36,6 +48,27 @@ jQuery(document).ready(function () {
                 swal("Erro...", data, "error");			
             }
         });
+    }
+
+    function modifyItem(){
+        jQuery.ajax({
+            type: "POST",
+            url: "../controller/ctrl_item.php",
+            data: {
+                codItem: $("#cod-item").val(),
+                desItem: $("#des-item").val(),
+                codCateg: $("#cod-categ").val(),
+                valItem: $("#val-item").val(),
+                obsItem: $("#obs-item").val(),
+                action: 'modifyItem'
+            },
+            success: function (data) {
+                swal(data,"success");
+            },
+            error: function (data) {
+                swal("Erro...", data, "error");         
+            }
+        });    
     }
 
     function getNextSequence() {

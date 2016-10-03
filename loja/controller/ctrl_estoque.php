@@ -49,6 +49,8 @@
 	function getCodItem($nmItem){
 		$conexao = connect();
 
+		$nmItem  = addslashes($nmItem);
+
 		$sql = "SELECT * from item where `nm-item` like '%".$nmItem."%'";
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 

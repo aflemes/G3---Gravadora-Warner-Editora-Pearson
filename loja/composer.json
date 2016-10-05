@@ -1,0 +1,6 @@
+"autoload": {
+    "psr-0": { "": "controller/" }
+},  
+"require-dev": {
+    "phpunit/phpunit": "3.7.*"
+}  

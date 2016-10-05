@@ -149,6 +149,18 @@
 		else return mysqli_erro($conexao);
 	}
 
+	function getItem($codItem){
+		$conexao = connect();
+		
+		$sqlGET = "SELECT * FROM `item` WHERE `cd-item` = ".$codItem;
+		$result = mysqli_query($conexao,$sqlGET) or die(mysqli_error($conexao));
+		
+		if ($result)
+			return true;
+		else
+			return false;		
+	}
+	
 	function modifyItem(){
 		$conexao = connect();
 

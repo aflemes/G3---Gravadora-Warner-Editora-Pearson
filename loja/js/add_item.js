@@ -40,7 +40,7 @@ jQuery(document).ready(function () {
                 action: 'insert'
             },
             success: function (data) {
-                swal(data,"success");
+                swal("Item cadastrado com sucesso!","success");
                 $('#ajax_form')[0].reset();
                 getNextSequence();
             },
@@ -63,7 +63,7 @@ jQuery(document).ready(function () {
                 action: 'modifyItem'
             },
             success: function (data) {
-                swal(data,"success");
+                swal("Item modificado com sucesso","success");
             },
             error: function (data) {
                 swal("Erro...", data, "error");         

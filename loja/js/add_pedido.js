@@ -69,11 +69,24 @@ $(document).ready(function() {
             },
             success: function( data )
             {
-                getNextSequence();
-                $('#ajax_form')[0].reset();
-                table.clear().draw();
+                if (data == 1){
+                    $('#ajax_form')[0].reset();
+                    table.clear().draw();
 
-                alert("Pedido salvo com sucesso!");                
+                    getNextSequence();
+                    swal("Pedido salvo com sucesso!","");
+
+                }
+                else
+                    if (data == 2){
+                        swal("Nao foi possivel incluir o pedido","error");
+                    }
+                    else
+                        if (data == 3){
+                            swal("O item a ser inserido, não possui estoque disponivel");
+                        }
+
+
             }   
         });
     }
@@ -86,32 +99,41 @@ $(document).ready(function() {
             url: "../controller/ctrl_item.php",
             data:{
                 item: $("#item").val(),
+                qtde: $("#qtde-item").val(),
                 action: 'findUniqueByReference'
             },
             success: function( data )
             {
-                var obj = jQuery.parseJSON(data);
-                $('#ajax_form')[0].reset();
+                if (!data){
+                    swal("Item sem estoque suficiente");
+                }
+                else{
+                    var obj = jQuery.parseJSON(data);
+                    $('#ajax_form')[0].reset();
 
-                table.row.add([ obj[1]["cd-item"],
-                                obj[1]["nm-item"],
-                                qtde,  
-                                obj[1]["val-item"],
-                            ]).draw( false );
+                    table.row.add([ obj[1]["cd-item"],
+                                    obj[1]["nm-item"],
+                                    qtde,  
+                                    obj[1]["val-item"],
+                                ]).draw( false );
+                }
             }   
         });
     }
 });
 
 function getNextSequence() {
-    jQuery.ajax({
+    /*jQuery.ajax({
         type: "POST",
         url: "../controller/ctrl_pedido.php",
         data: {
             action: 'getSequence'
         },
         success: function (data) {
+            alert(data);
             $("#cod-pedido").val(parseInt(data) + 1);
         }
-    });
+    });*/
+
+    $("#cod-pedido").val(parseInt($("#cod-pedido").val()) + 1);
 }

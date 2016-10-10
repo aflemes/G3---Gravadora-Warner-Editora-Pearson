@@ -11,6 +11,9 @@
 		case 'insert':
 			echo insertEstoque();
 			break;
+		case 'remove':
+			echo removeEstoque();
+			break;
 	}
 
 	function insertEstoque(){		
@@ -20,7 +23,7 @@
 		$item = getCodItem($item);
 
 		if ($item == "NaN")
-			return "Ocorreu um erro inesperado!";
+			return false;
 
 		$qtde = $_POST["qtde"];
 
@@ -35,16 +38,45 @@
 			$sql = "UPDATE `estoque` SET `qtd-estoque`=".$qtde." WHERE `cd-item`=".$item;
 			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");			
 
-			return "Estoque atualizado com sucesso!";
+			return true;
 		}
 		else{
 			$sql = "INSERT INTO `estoque`(`cd-item`, `qtd-estoque`) VALUES (".$item.",".$qtde.")";
 			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");			
 
-			return "Estoque atualizado com sucesso!";
+			return true;
 		}
-
 	}
+
+	function removeEstoque(){
+		$conexao = connect();
+		
+		$item = $_POST["item"];
+		$item = getCodItem($item);
+
+		if ($item == "NaN")
+			return "Ocorreu um erro inesperado!";
+
+		$sql = "SELECT * from estoque where `cd-item` = ".$item;
+		$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");
+
+		$rowcount=mysqli_num_rows($result);
+
+		if ($rowcount > 0){
+			$qtde = mysqli_fetch_array($result)["qtd-estoque"];
+			$qtde -= $_POST["qtde"];
+
+			$sql = "UPDATE `estoque` SET `qtd-estoque`=".$qtde." WHERE `cd-item`=".$item;
+			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");						
+
+			if ($result)
+				return true;
+			else
+				return false;
+		}
+		else return false;
+	}
+
 
 	function getCodItem($nmItem){
 		$conexao = connect();
@@ -63,6 +95,22 @@
 	}
 
 	function verificaEstoque($item,$qtde){
+		$conexao = connect();
+
+		$sql = "SELECT * FROM `estoque` WHERE `cd-item` = ".$item;
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+		$rowcount=mysqli_num_rows($result);
+
+		if ($rowcount > 0){
+			 $qtdeEstoq = mysqli_fetch_array($result)["qtd-estoque"];
+
+			 if ($qtdeEstoq >= $qtde)
+			 	return true;
+			 else
+			 	return false;
+		}
+		else return false;				
 
 	}
 ?>

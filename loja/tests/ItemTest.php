@@ -16,14 +16,17 @@ class ItemTest extends TestCase
         $_POST["acao"]     = 'insert';
 
         // insert 
-        insertItem();
+        /*$retorno = insertItem();
+
+        if (!$retorno)
+        	$this->assertEquals(true,$retorno);
 
         // busca
         $retorno = getItem(999);
 
-        deleteItem(999);
+        deleteItem(999);*/
 
-        $this->assertEquals(true,$retorno);
+        $this->assertEquals(true,false);
     }
 
     // ...

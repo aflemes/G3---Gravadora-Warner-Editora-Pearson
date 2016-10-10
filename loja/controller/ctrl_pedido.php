@@ -1,5 +1,7 @@
 <?php
 	include_once "../util/connect.php";
+	include_once "ctrl_item.php";
+	include_once "ctrl_estoque.php";
 
 	$acao = "";
 
@@ -11,14 +13,11 @@
 		case 'getSequence':
 			echo getLastPedido();
 			break;
-		case 'insert':
-			echo insertPedido();
-			break;
 		case 'find':
 			echo getAllPedido();
 			break;
 		case 'saveItemOrder':
-			echo insertItem();
+			echo insertPedido();
 			break;
 	}
 
@@ -32,13 +31,34 @@
 		return $row[0];
 	}
 
-	function insertItem(){
+	function insertPedido(){
 		$conexao = connect();
+		$regAtualizado = 0;
 
 		foreach($_POST["elements"] as $k=>$arr){
-			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
+			$item = getItem($arr['cd-item']);
+
+			if (!$item){
+				continue;
+			}
+
+			if (!verificaEstoque($arr['cd-item'],$arr['qtd-item']))
+				return 3;
+
+
+			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtde-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
 			$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+
+			if ($result)
+				$regAtualizado++;
 		}
+
+		if ($regAtualizado > 0)
+			return 1;
+		else
+			return 2;
+
 	}
 	
 ?>

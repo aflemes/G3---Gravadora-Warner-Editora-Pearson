@@ -4,6 +4,7 @@
 	}
 
 	include_once "../util/connect.php";
+	include_once "ctrl_estoque.php";
 	
 	$acao = "";
 
@@ -44,7 +45,7 @@
 
 		$arrItem = "";
 		$i = 0;
-		
+
 		while($row = mysqli_fetch_array($result))
 		{
 			$i++;
@@ -54,7 +55,7 @@
 		}
 
 		if ($i == 0)
-			return 'NaN';
+			return false;
 		else return json_encode($arrItem);
 	}
 	
@@ -113,8 +114,8 @@
 		$insert = "INSERT INTO item values('".$desItem."',".$codCateg.",".$codItem.",'".$obsItem."','".$valItem."')";		
 		$resultado = mysqli_query($conexao,$insert);
 
-		if ($resultado) return "Registro foi salvo com sucesso!";		
-		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
+		if ($resultado) return true;
+		else return false; //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
 	}
 
 	function deleteItem($codItem){
@@ -123,8 +124,8 @@
 		$delete = "DELETE FROM `item` WHERE `cd-item` = ".$codItem;
 		$resultado = mysqli_query($conexao,$delete);
 
-		if ($resultado) return "Registro removido com sucesso!";
-		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";	
+		if ($resultado) return true;
+		else return false; //return "Ocorreu uma falha na inclusão do registro, tente novamente!";	
 	}
 	
 	function beforeModify($codItem){

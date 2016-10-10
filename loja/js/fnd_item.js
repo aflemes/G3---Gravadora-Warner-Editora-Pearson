@@ -47,7 +47,7 @@ function removeItem(codItem){
                 action: 'removeUniqueItem'
             },
             success: function (data) {            
-                swal(data);
+                swal("Item removido com sucesso","");
                 $("#"+codItem).css("display","none");
             },
             error: function (data) {

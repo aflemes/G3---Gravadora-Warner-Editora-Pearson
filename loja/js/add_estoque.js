@@ -48,12 +48,15 @@ function atualizaEstoque(){
         },
         success: function( data )
         {
-            if (data != ""){
+            if (data){
                 $('#ajax_form')[0].reset();
                 swal("Mensagem", "Estoque atualizado com sucesso!");
             }else swal("Error", "Item não cadastrado!");
-
-        }   
+        },
+        fail: function( data )
+        {
+            swal("Error","Ocorre um erro inesperado");
+        }
     });
 }
 

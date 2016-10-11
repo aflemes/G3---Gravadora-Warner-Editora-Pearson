@@ -54,8 +54,10 @@
 				<th>Valor</th>
 			</thead>
 		</table>
-		
-		<input type="button" value="Salvar" class="btn btn-salvar" id="btn-salvar">		
+		<div class="linha">
+			<input type="button" value="Remover Item" class="btn btn-remover" id="btn-remover">
+			<input type="button" value="Salvar" class="btn btn-salvar" id="btn-salvar">
+		</div>
 	</form>
 
 	<script type="text/javascript" src="../js/add_pedido.js"></script>

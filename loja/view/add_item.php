@@ -83,7 +83,7 @@
 			else
 			{
 		?>	
-			<a id="btn-modificar" class="btn btn-modificar">Modificador Item</a>
+			<a id="btn-modificar" class="btn btn-modificar">Modificar Item</a>
 		<?php
 			}
 		?>

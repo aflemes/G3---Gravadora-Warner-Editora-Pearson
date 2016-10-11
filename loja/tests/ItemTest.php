@@ -16,17 +16,24 @@ class ItemTest extends TestCase
         $_POST["acao"]     = 'insert';
 
         // insert 
-        /*$retorno = insertItem();
+        $retorno = insertItem();
 
         if (!$retorno)
         	$this->assertEquals(true,$retorno);
 
+        deleteItem(999);
+
+        $this->assertEquals(true,$retorno);
+    }
+
+    public function testFndItem()
+    {
+        $retorno = false;
+
         // busca
         $retorno = getItem(999);
 
-        deleteItem(999);*/
-
-        $this->assertEquals(true,false);
+        $this->assertEquals(true,$retorno);
     }
 
     // ...

@@ -38,8 +38,9 @@
 
 	function getNameItem(){
 		$conexao = connect();
+		$desItem  = addslashes($_POST["item"]);
 		
-		$sql = "SELECT * from item where `nm-item` like '%".$_POST['item']."%'";
+		$sql = "SELECT * from item where `nm-item` like '%".$desItem."%'";
 						
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
@@ -71,6 +72,9 @@
 		
 		while($row = mysqli_fetch_array($result))
 		{
+			if (intval($row['cd-item']) == 0)
+				continue;
+			
 			$i++;
 			$arrItem[$i]['cd-item']  = $row['cd-item'];
 			$arrItem[$i]['cd-categ'] = $row['cd-categ'];
@@ -124,7 +128,10 @@
 		$delete = "DELETE FROM `item` WHERE `cd-item` = ".$codItem;
 		$resultado = mysqli_query($conexao,$delete);
 
-		if ($resultado) return true;
+		if ($resultado){
+			removeEstoque($codItem);
+			return true;
+		}
 		else return false; //return "Ocorreu uma falha na inclusão do registro, tente novamente!";	
 	}
 	

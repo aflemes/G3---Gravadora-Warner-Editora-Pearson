@@ -4,7 +4,7 @@ jQuery(document).ready(function () {
             swal("Oops...", "Preencha a Descrição do Item.", "warning");
         } else if (!$("#cod-categ").val()) {
             swal("Oops...", "Preencha a Categoria do Item.", "warning");
-        } else if (!$("#val-item").val()) {
+        } else if (!parseInt($("#val-item").val()) > 0) {
             swal("Oops...", "Preencha o Preço do Item.", "warning");
         } else {
             addItem();

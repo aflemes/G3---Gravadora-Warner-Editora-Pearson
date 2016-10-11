@@ -15,8 +15,9 @@
 	text-align: right;
 }
 
-#btn-salvar {
-	margin: 20px auto 0 auto;	
+.btn-salvar {
+	margin: 20px auto 0 auto;
+	background-color: #16691d;
 }
 
 .linha {

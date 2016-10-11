@@ -60,5 +60,33 @@
 			return 2;
 
 	}
+
+	function insertUniquePedido($item,$qtdeItem){
+		$conexao = connect();
+
+		$pedido = getLastPedido();
+
+		$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtde-item`,`cd-cliente`) VALUES (".$pedido.",".$item.",".$qtdeItem.",1)";
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+
+		if ($result)
+			return true;
+		else
+			return false;
+	}
+
+	function deletePedido($item){
+		$conexao = connect();
+
+		$sql = "DELETE from `pedido` where `cd-item` =".$item;
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+		if ($result)		
+			return true;
+		else
+			return false;
+
+	}
 	
 ?>

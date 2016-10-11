@@ -19,7 +19,12 @@
 	margin: 20px auto 0 auto;
 	background-color: #16691d;
     margin-right: 0px;
-    
+}
+
+.btn-remover {
+    margin: 20px auto 0 auto;
+    background-color: #16691d;
+    margin-left: 0px;
 }
 
 input.button-add {

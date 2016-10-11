@@ -8,7 +8,13 @@ class PedidoTest extends TestCase
     {
         $retorno = false;
 
-        
+        $retorno = insertUniquePedido(0,100);
+
+        if (!$retorno){
+			$this->assertEquals(true,$retorno);
+        }
+
+		$retorno = deletePedido(0);   
 
         $this->assertEquals(true,$retorno);
     }

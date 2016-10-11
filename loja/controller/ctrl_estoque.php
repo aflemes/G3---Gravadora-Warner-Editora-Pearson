@@ -12,7 +12,7 @@
 			echo insertEstoque();
 			break;
 		case 'remove':
-			echo removeEstoque();
+			echo refreshEstoque();
 			break;
 	}
 
@@ -33,22 +33,23 @@
 		$rowcount=mysqli_num_rows($result);
 
 		if ($rowcount > 0){
-			$qtde += mysqli_fetch_array($result)["qtd-estoque"];
+			$qtde += intval(mysqli_fetch_array($result)["qtd-estoque"]);
 
 			$sql = "UPDATE `estoque` SET `qtd-estoque`=".$qtde." WHERE `cd-item`=".$item;
-			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");			
-
-			return true;
+			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");
 		}
 		else{
 			$sql = "INSERT INTO `estoque`(`cd-item`, `qtd-estoque`) VALUES (".$item.",".$qtde.")";
-			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");			
-
-			return true;
+			$result = mysqli_query($conexao,$sql) or die("houve uma falha no SQL");
 		}
+
+		if ($result)
+			return true;
+		else
+			return false;
 	}
 
-	function removeEstoque(){
+	function refreshEstoque(){
 		$conexao = connect();
 		
 		$item = $_POST["item"];
@@ -110,7 +111,18 @@
 			 else
 			 	return false;
 		}
-		else return false;				
+		else return false;
+	}
 
+	function removeEstoque($item){
+		$conexao = connect();
+
+		$sql = "DELETE FROM `estoque` WHERE `cd-item` = ".$item;
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));	
+
+		if ($result)
+			return true;
+		else 
+			return false;
 	}
 ?>

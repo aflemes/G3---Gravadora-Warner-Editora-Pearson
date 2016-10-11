@@ -33,6 +33,24 @@ $(document).ready(function() {
         }
     });
 
+    $('#example tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#btn-remover').click( function () {
+        if (table.$('tr.selected').hasClass('selected'))
+            var remover = confirm("Deseja remover o item selecionado?");
+
+        if (remover)
+            table.row('.selected').remove().draw( false );
+    } );
+
     $("#button-add").click(function(){
         addItemToDataTables();
     });
@@ -58,6 +76,11 @@ $(document).ready(function() {
    
     function addItemToOrder(){
         var elements = dTablesToArray();
+
+        if (elements.length == 0){
+            alert("Informe ao menos um item ao pedido");
+            return;
+        }
 
         jQuery.ajax({
             type: "POST",

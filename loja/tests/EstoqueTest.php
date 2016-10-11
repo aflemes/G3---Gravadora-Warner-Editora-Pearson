@@ -8,14 +8,14 @@ class EstoqueTest extends TestCase
     {
         $retorno = false;
 
-        $_POST["item"] = 1;
+        $_POST["item"] = "PHPUnit";
         $_POST["qtde"] = 100;
 
         //insere a quantidade 100 
         $retorno = insertEstoque();
 
         //remove o estoque atualizado;
-		removeEstoque();
+		removeEstoque(0);
 
         $this->assertEquals(true,$retorno);
     }

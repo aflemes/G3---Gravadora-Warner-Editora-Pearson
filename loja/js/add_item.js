@@ -39,7 +39,7 @@ jQuery(document).ready(function () {
                 obsItem: $("#obs-item").val(),
                 action: 'insert'
             },
-            success: function (data) {
+            success: function (data) {				
                 swal("Item cadastrado com sucesso!","success");
                 $('#ajax_form')[0].reset();
                 getNextSequence();

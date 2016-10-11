@@ -4,8 +4,7 @@
 	}
 
 	include_once "../util/connect.php";
-	include_once "ctrl_estoque.php";
-	
+		
 	$acao = "";
 
 	if (isset($_POST["action"])){
@@ -185,5 +184,17 @@
 
 		if ($result) return "Registro modificado com sucesso!";		
 		else return mysqli_error($conexao); //return "Ocorreu uma falha na inclusão do registro, tente novamente!";
+	}
+	
+	function removeEstoque($item){
+		$conexao = connect();
+
+		$sql = "DELETE FROM `estoque` WHERE `cd-item` = ".$item;
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));	
+
+		if ($result)
+			return true;
+		else 
+			return false;
 	}
 ?>

@@ -92,6 +92,7 @@ $(document).ready(function() {
             },
             success: function( data )
             {
+				alert(data);
                 if (data == 1){
                     $('#ajax_form')[0].reset();
                     table.clear().draw();

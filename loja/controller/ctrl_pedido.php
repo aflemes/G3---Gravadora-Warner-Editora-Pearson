@@ -1,8 +1,7 @@
 <?php
 	include_once "../util/connect.php";
 	include_once "ctrl_item.php";
-	include_once "ctrl_estoque.php";
-
+	
 	$acao = "";
 
 	if (isset($_POST["action"])){
@@ -46,9 +45,8 @@
 				return 3;
 
 
-			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtde-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
+			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
 			$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
 
 			if ($result)
 				$regAtualizado++;
@@ -87,6 +85,25 @@
 		else
 			return false;
 
+	}
+	
+	function verificaEstoque($item,$qtde){
+		$conexao = connect();
+
+		$sql = "SELECT * FROM `estoque` WHERE `cd-item` = ".$item;
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+		$rowcount=mysqli_num_rows($result);
+
+		if ($rowcount > 0){
+			 $qtdeEstoq = mysqli_fetch_array($result)["qtd-estoque"];
+
+			 if ($qtdeEstoq >= $qtde)
+			 	return true;
+			 else
+			 	return false;
+		}
+		else return false;	
 	}
 	
 ?>

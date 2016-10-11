@@ -92,8 +92,7 @@ $(document).ready(function() {
             },
             success: function( data )
             {
-				alert(data);
-                if (data == 1){
+				if (data == 1){
                     $('#ajax_form')[0].reset();
                     table.clear().draw();
 
@@ -109,8 +108,6 @@ $(document).ready(function() {
                         if (data == 3){
                             swal("O item a ser inserido, não possui estoque disponivel");
                         }
-
-
             }   
         });
     }

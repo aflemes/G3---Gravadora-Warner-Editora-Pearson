@@ -79,9 +79,7 @@ ALTER TABLE `item`
 -- Indexes for table `pedido`
 --
 ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`cd-pedido`),
-  ADD UNIQUE KEY `cd-pedido` (`cd-pedido`),
-  ADD UNIQUE KEY `cd-item` (`cd-item`);
+  ADD PRIMARY KEY (`cd-pedido`,`cd-item`);
 
 --
 -- AUTO_INCREMENT for dumped tables

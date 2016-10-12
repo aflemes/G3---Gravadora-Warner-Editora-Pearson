@@ -1,0 +1,41 @@
+--- G1 - Saraiva
+Java
+Spring
+PostGres
+Junit
+Git
+Bootstrap
+Trello
+
+Utiliza uma loucura de transações ao invés de pedidos.
+
+--- G2 - Lojas Americanas
+Framework Bootstrap
+Framework Laravel
+MVC
+Composer
+Ajax
+MySql
+
+-- G3 é o nosso
+
+-- G5
+WAMP
+Php
+MySQL
+Apache
+Java
+JUnit
+Hibernate
+
+-- G6
+Bootstrap
+PostgreSQL
+JQuery
+Spring
+JSon
+
+-- G7 - 
+Java
+PostegreSQL
+JUnit

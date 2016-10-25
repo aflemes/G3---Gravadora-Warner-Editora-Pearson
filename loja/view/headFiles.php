@@ -1,27 +1,27 @@
 <!-- Tags que são comum a todas as páginas<!-->
 <meta charset="UTF-8">
 
-<link rel="apple-touch-icon" sizes="57x57" href="../favicons/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="../favicons/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../favicons/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="../favicons/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../favicons/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="../favicons/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="../favicons/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="../favicons/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="../favicons/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="../favicons/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
-<link rel="manifest" href="../favicons/manifest.json">
+<link rel="apple-touch-icon" sizes="57x57" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/g3---gravadora-warner-editora-pearson/loja/favicons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/favicons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/g3---gravadora-warner-editora-pearson/loja/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/g3---gravadora-warner-editora-pearson/loja/favicons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/g3---gravadora-warner-editora-pearson/loja/favicons/favicon-16x16.png">
+<link rel="manifest" href="/g3---gravadora-warner-editora-pearson/loja/favicons/manifest.json">
 <meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="../favicons/ms-icon-144x144.png">
+<meta name="msapplication-TileImage" content="/g3---gravadora-warner-editora-pearson/loja/favicons/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="/g3---gravadora-warner-editora-pearson/loja/css/main.css">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>		
+<script type="text/javascript" src="/g3---gravadora-warner-editora-pearson/loja/js/jquery-3.1.0.min.js"></script>		

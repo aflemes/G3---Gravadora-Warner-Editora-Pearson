@@ -1,0 +1,9 @@
+Domínio do Site: https://loja-placeholder.000webhostapp.com/
+Painel Administrativo: https://www.000webhost.com/cpanel-login
+E-mail: nupsarur@yroid.com
+Senha: placeholder2016
+
+Database:
+Nome: id100915_lojaplaceholder
+Usuário: id100915_placeholder_admin
+Senha: placeholder2016

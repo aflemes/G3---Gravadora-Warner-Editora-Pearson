@@ -1,9 +1,0 @@
-11) Tecnicamente, Web Services são serviços distribuídos que processam mensagens SOAP codificadas em XML, enviadas
-através de HTTP e que são descritas através da Web Services Description Language (WSDL). Uma das críticas aos Web
-Services diz respeito que esses são menos eficiente do que outros sistemas existentes (RPC, RMI, etc). O gráfico da IBM
-(gráfico da esquerda) mostra um comparativo da performance (número que requisições atendidas) entre o RMI e Web
-Services (SOAP/XML). Já o gráfico da direita, também da IBM, mostra o tempo consumido por cada uma das etapas no
-recebimento de uma mensagem SOAP/XML.
-
-RMI trafega as informações em binario, logo, não necessita fazer o parse
-XML é mais demorado pois trafega em string e o webservice tambem trafega os header e outras informações.

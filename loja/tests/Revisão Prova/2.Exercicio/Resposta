@@ -1,7 +1,0 @@
-Um aluno da disciplina de Sistemas Distribuídos desenvolveu um programa cliente que para efetuar a troca do conteúdo
-de duas váriaveis chama um procedimento remoto chamado troca que é executado em uma máquina referenciada como
-MAQ_SERV. O código do programa cliente e do programa servidor podem ser vistos abaixo. Esses códigos omitem, por
-questões de simplicidade, uma série de aspectos relacionados a RPC. Observe que o aluno utilizou passagem de
-parâmetros por referência (ponteiros). Pergunta-se: a solução utilizada por esse aluno está correta. Porque?
-
-Não pois em uma troca de mensagem via RPC, o endereçamento de memória da maquina cliente e do servidor não são as mesmas, logo, para utilizar essa tecnologia se é utilizada passagem de parametros via cópia.

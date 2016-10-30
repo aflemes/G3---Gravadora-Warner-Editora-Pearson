@@ -1,0 +1,7 @@
+3) Imagine um par produtor-consumidor (código abaixo) se comunicando diretamente através de operações send e receive
+bloqueantes (sempre bloqueantes). Isto é, o produtor (ciclicamente) produz uma mensagem e a envia para o consumidor, e
+este (ciclicamente) recebe uma mensagem e a consome. Pergunta-se: a velocidade desse sistema é determinada pela
+velocidade do processo produtor, pela velocidade do processo consumidor ou pela velocidade do mais lento dos dois
+processos?
+
+Pela velocidade do mais lento dos dois processo.

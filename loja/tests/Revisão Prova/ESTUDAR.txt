@@ -1,0 +1,6 @@
+Sistemas distribuidos e Programação Paralela - Conceitos
+Taxonomia de Flynn (MISD nao existe, SISD (computadores unicore), SIMD (GPUS, calculo de vetores), MIMD (computadores multicore)).
+Sockets
+RPC (stubs, trafega em binário, servidor de nomes).
+RMI (trafega em binário)
+OpenMP

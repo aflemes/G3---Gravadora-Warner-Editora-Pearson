@@ -48,10 +48,8 @@
 			$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$_POST['pedido'].",".$arr['cd-item'].",".$arr['qtd-item'].",1)";
 			$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-			if ($result){
+			if ($result)
 				$regAtualizado++;
-				atualizaEstoque($arr['cd-item'],.$arr['qtd-item']);
-			}
 		}
 
 		if ($regAtualizado > 0)
@@ -106,15 +104,6 @@
 			 	return false;
 		}
 		else return false;	
-	}
-
-	function atualizaEstoque($item,$qtde){
-		$conexao = connect();
-
-		$sql = "UPDATE `estoque` SET `cd-item`=[value-1],`qtd-estoque`=[value-2] WHERE 1"
-		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-
-		$rowcount=mysqli_num_rows($result);
 	}
 	
 ?>

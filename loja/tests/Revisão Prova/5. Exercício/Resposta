@@ -1,0 +1,5 @@
+Seja uma aplicação de videofone sobre Internet, onde é considerado menos crítico perder um frame, do que provocar um
+atraso grande na emissão da informação. Qual o protocolo mais adequado (TCP ou UDP)? Porquê?
+UDP é mais rápido pois dentre outros fatores, ele não necessita e uma confirmação de entrega e o cabeçalho da mensagem é bem menor.
+
+(TCP é mais confiável, porém mais lento, pois ele necessita de uma confirmação de entrega e o seu cabeçalho é maior).

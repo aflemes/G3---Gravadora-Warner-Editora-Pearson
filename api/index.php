@@ -45,7 +45,7 @@ $app->get('/setItem/:id/:descr/:categ/:value/:obs', function ($id,$descr,$categ,
     if ($resultado)
     	$app->response->setStatus(200);
     else
-    	$app->response->setStatus(406);
+    	$app->response->setStatus(500);
 });
 
 $app->post('/getItem/', function () {
@@ -57,7 +57,7 @@ $app->post('/getItem/', function () {
 	$data = json_decode($body, true);
 
 	if ($data["id"] == null){
-		$app->response->setStatus(406);
+		$app->response->setStatus(500);
 	}
 	else $id = $data["id"];
 
@@ -94,10 +94,10 @@ $app->post('/getItem/', function () {
 			echo json_encode($header);
 		}
 		else
-			$app->response->setStatus(406);
+			$app->response->setStatus(500);
 	}
 	else{
-		$app->response->setStatus(406);
+		$app->response->setStatus(500);
 	}
 });
 
@@ -139,10 +139,10 @@ $app->get('/getAllItem/', function () {
 			echo json_encode($header);
 		}
 		else
-			$app->response->setStatus(406);
+			$app->response->setStatus(500);
 	}
 	else{
-		$app->response->setStatus(406);
+		$app->response->setStatus(500);
 	}
 });
 
@@ -159,46 +159,43 @@ $app->post('/getTeste',  function () use ($app) {
 
 $app->post('/setPedido/', function () {
  
-    /*$app = \Slim\Slim::getInstance();
+    $app = \Slim\Slim::getInstance();
     $app->response->setStatus(200);
 
     $body = $app->request->getBody();
 	$data = json_decode($body, true);
 
-	if ($data["id"] == null){
-		$app->response->setStatus(406);
+	if ($data[0]["id"] == null){
+		$app->response->setStatus(500);
 	}
-	else $id = $data["id"];
-		 $qtde = $data["qtde"];
-		 $client = $data["cliente"];
-
-
-    $cod_cli = getCliente($client);
-    if ($cod_cli == null){
-    	$app->response->setStatus(406);	
-    }
-    
-    $pedido = getLastPedido() + 1;
 	
+	$pedido = getLastPedido() + 1;
 	$conexao = connect();
 
-	//$select   = " SELECT * FROM `pedido` WHERE `cd-pedido` = $pedido and `cd-item` = $id";
-	//$result   = mysqli_query($conexao,$select) or die(mysqli_error($conexao));
-	//$rowcount = mysqli_num_rows($result);
+	/*
+		CONSISTE CLIENTE
+		$cod_cli = getCliente($client);
+		if ($cod_cli == null){
+			$app->response->setStatus(406);	
+		}
+	*/
 
-	//if ($rowcount > 0){
-	//	$app->response->setStatus(406);
-	//	return;
-	//}
+	for ($i = 0;$i < sizeof($data); $i++){
+		$id = $data[$i]["id"];
+		$qtde = $data[$i]["qtde"];
+		$client = $data[$i]["cliente"];
+		//BUSCA CODIGO DO CLIENTE
+		$cod_cli = getCliente($client);
 
-	$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$pedido.",".$id.",".$qtde.",".$cod_cli.")";
-	$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+		$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$pedido.",".$id.",".$qtde.",".$cod_cli.")";
+		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-	if ($result){
-		$app->response->setStatus(200);
+		if ($result){
+			$app->response->setStatus(200);
+		}
+		else
+			$app->response->setStatus(500);
 	}
-	else
-		$app->response->setStatus(406);*/
 });
 
 
@@ -225,10 +222,10 @@ $app->get('/getPedido/:pedido/:client', function ($pedido,$client) {
 			echo json_encode($header);
 		}
 		else
-			$app->response->setStatus(406);
+			$app->response->setStatus(500);
 	}
 	else
-		$app->response->setStatus(406);
+		$app->response->setStatus(500);
 
 });
 function getLastPedido(){

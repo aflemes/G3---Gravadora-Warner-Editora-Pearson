@@ -48,10 +48,18 @@ $app->get('/setItem/:id/:descr/:categ/:value/:obs', function ($id,$descr,$categ,
     	$app->response->setStatus(406);
 });
 
-$app->get('/getItem/:id', function ($id) {
+$app->post('/getItem/', function () {
  
     $app = \Slim\Slim::getInstance();
     $i=0;
+
+    $body = $app->request->getBody();
+	$data = json_decode($body, true);
+
+	if ($data["id"] == null){
+		$app->response->setStatus(406);
+	}
+	else $id = $data["id"];
 
 	$conexao = connect();	
     $sql = "SELECT * from item where `cd-item` = ".$id;
@@ -142,10 +150,28 @@ $app->get('/getAllItem/', function () {
 * [INFORMACOES REFERENTE AO PEDIDO]
 */
 
-$app->get('/setPedido/:id/:qtde/:client', function ($id,$qtde,$client) {
+$app->post('/getTeste',  function () use ($app) {
+  	$body = $app->request->getBody(); 
+	$data = json_decode($body, true);
+
+  	echo $data["paramName"];
+});
+
+$app->post('/setPedido/', function () {
  
-    $app = \Slim\Slim::getInstance();
+    /*$app = \Slim\Slim::getInstance();
     $app->response->setStatus(200);
+
+    $body = $app->request->getBody();
+	$data = json_decode($body, true);
+
+	if ($data["id"] == null){
+		$app->response->setStatus(406);
+	}
+	else $id = $data["id"];
+		 $qtde = $data["qtde"];
+		 $client = $data["cliente"];
+
 
     $cod_cli = getCliente($client);
     if ($cod_cli == null){
@@ -156,14 +182,14 @@ $app->get('/setPedido/:id/:qtde/:client', function ($id,$qtde,$client) {
 	
 	$conexao = connect();
 
-	/*$select   = " SELECT * FROM `pedido` WHERE `cd-pedido` = $pedido and `cd-item` = $id";
-	$result   = mysqli_query($conexao,$select) or die(mysqli_error($conexao));
-	$rowcount = mysqli_num_rows($result);
+	//$select   = " SELECT * FROM `pedido` WHERE `cd-pedido` = $pedido and `cd-item` = $id";
+	//$result   = mysqli_query($conexao,$select) or die(mysqli_error($conexao));
+	//$rowcount = mysqli_num_rows($result);
 
-	if ($rowcount > 0){
-		$app->response->setStatus(406);
-		return;
-	}*/
+	//if ($rowcount > 0){
+	//	$app->response->setStatus(406);
+	//	return;
+	//}
 
 	$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$pedido.",".$id.",".$qtde.",".$cod_cli.")";
 	$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
@@ -172,16 +198,11 @@ $app->get('/setPedido/:id/:qtde/:client', function ($id,$qtde,$client) {
 		$app->response->setStatus(200);
 	}
 	else
-		$app->response->setStatus(406);
+		$app->response->setStatus(406);*/
 });
 
 
 $app->get('/getPedido/:pedido/:client', function ($pedido,$client) {
- 
-    $app = \Slim\Slim::getInstance();
-    $i=0;	
-
-    $conexao = connect();	
     $sql = "SELECT * from pedido where `cd-pedido` = $pedido and `cd-cliente` = $client";
     
 	$resultado = mysqli_query($conexao,$sql);

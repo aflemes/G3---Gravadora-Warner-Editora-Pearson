@@ -150,13 +150,6 @@ $app->get('/getAllItem/', function () {
 * [INFORMACOES REFERENTE AO PEDIDO]
 */
 
-$app->post('/getTeste',  function () use ($app) {
-  	$body = $app->request->getBody(); 
-	$data = json_decode($body, true);
-
-  	echo $data["paramName"];
-});
-
 $app->post('/setPedido/', function () {
  
     $app = \Slim\Slim::getInstance();
@@ -165,37 +158,39 @@ $app->post('/setPedido/', function () {
     $body = $app->request->getBody();
 	$data = json_decode($body, true);
 
-	if ($data[0]["id"] == null){
+	if ($data["cnpj"] == null){
 		$app->response->setStatus(500);
 	}
 	
 	$pedido = getLastPedido() + 1;
 	$conexao = connect();
+	
+	//CONSISTE CLIENTE
+	$cod_cli = getCliente($data["cnpj"]);
+	if ($cod_cli == null){
+		$app->response->setStatus(406);	
+	}
 
-	/*
-		CONSISTE CLIENTE
-		$cod_cli = getCliente($client);
-		if ($cod_cli == null){
-			$app->response->setStatus(406);	
-		}
-	*/
+	$inclusao = false;
 
-	for ($i = 0;$i < sizeof($data); $i++){
-		$id = $data[$i]["id"];
-		$qtde = $data[$i]["qtde"];
-		$client = $data[$i]["cliente"];
-		//BUSCA CODIGO DO CLIENTE
-		$cod_cli = getCliente($client);
-
+	for ($i = 0;$i < sizeof($data["item"]); $i++){
+		$id = $data["item"][$i]["id"];
+		$qtde = $data["item"][$i]["qtde"];
+		
 		$sql = "INSERT INTO pedido (`cd-pedido`,`cd-item`,`qtd-item`,`cd-cliente`) VALUES (".$pedido.",".$id.",".$qtde.",".$cod_cli.")";
 		$result = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 
-		if ($result){
-			$app->response->setStatus(200);
-		}
+		if ($result)
+			$inclusao = true;
 		else
-			$app->response->setStatus(500);
+			$inclusao = false;
 	}
+
+	if ($inclusao){
+		$app->response->setStatus(200);
+	}
+	else
+		$app->response->setStatus(500);
 });
 
 

@@ -156,8 +156,7 @@ $app->post('/setPedido/', function () {
     //$app->response->setStatus(200);
 
     $body = $app->request->getBody();
-    print_r($body);
-	$data = json_decode($body, true);
+    $data = json_decode($body, true);
 
 	if ($data["cnpj"] == null){
 		$app->response->setStatus(500);

@@ -101,7 +101,7 @@ $app->post('/getItem/', function () {
 	}
 });
 
-$app->get('/getAllItem/', function () {
+$app->get('/getItem/', function () {
  
     $app = \Slim\Slim::getInstance();
     $i=0;
@@ -115,28 +115,28 @@ $app->get('/getAllItem/', function () {
 		$items  = array();
 
 		while($row = mysqli_fetch_array($resultado)) {
-	        $items[$i]["cd-item"]  = $row["cd-item"];
-	        $items[$i]["nm-item"]  = $row["nm-item"];
-	        $items[$i]["cd-categ"] = $row["cd-categ"];
-	        $items[$i]["des-item"] = $row["des-item"];
-	        $items[$i]["val-item"] = $row["val-item"];
+	        $items[$i]["item"]  = $row["cd-item"];
+	        $items[$i]["descricao"]  = $row["nm-item"];
+	        $items[$i]["categoria"] = $row["cd-categ"];
+	        $items[$i]["preco"] = $row["val-item"];
+	        //$items[$i]["des-item"] = $row["des-item"];
 
-	        $getEstoque = "SELECT * FROM `estoque` WHERE `cd-item` = ".$row["cd-item"];
+	        $getEstoque = "SELECT `qtd-estoque` FROM `estoque` WHERE `cd-item` = ".$row["cd-item"];
 	        $resEstoque = mysqli_query($conexao,$getEstoque);
 
 	        if (mysqli_num_rows($resEstoque) > 0){
-	        	$items[$i]["qtd-estoque"] = mysqli_fetch_array($resEstoque);
+	        	$items[$i]["quantidade_estoque"] = mysqli_fetch_array($resEstoque)["qtd-estoque"];
 	        }
-	        else $items[$i]["qtd-estoque"] = 0;
+	        else $items[$i]["quantidade_estoque"] = 0;
 
 	        $i++;
 		}
 		
 		if ($i > 0){
-			$header = array("Produto" => $items);		
+			//$header = array("Produto" => $items);		
 		
 			$app->response->setStatus(200);	
-			echo json_encode($header);
+			echo json_encode($items);
 		}
 		else
 			$app->response->setStatus(500);
@@ -153,9 +153,10 @@ $app->get('/getAllItem/', function () {
 $app->post('/setPedido/', function () {
  
     $app = \Slim\Slim::getInstance();
-    $app->response->setStatus(200);
+    //$app->response->setStatus(200);
 
     $body = $app->request->getBody();
+    print_r($body);
 	$data = json_decode($body, true);
 
 	if ($data["cnpj"] == null){
